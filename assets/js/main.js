@@ -53,3 +53,6 @@ function ticketDone() {
     errorModal.showModal();
   }
 }
+
+
+// bg-[url('/assets/images/banner.png')] bg-no-repeat bg-cover
