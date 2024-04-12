@@ -7,21 +7,21 @@ function sortSeat(elementId) {
   const isActive = element.classList.contains("bg-[#1DD100]");
 
   console.log(seats.length);
-  if (seats.length <= 3) {
-    if (isActive) {
-      element.classList.add("bg-[#F7F8F8]");
-      element.classList.remove("bg-[#1DD100]");
-      removeSeat(element, seats);
-    } else {
+  if (isActive) {
+    element.classList.add("bg-[#F7F8F8]");
+    element.classList.remove("bg-[#1DD100]");
+    removeSeat(element, seats);
+  } else {
+    if (seats.length + 1 <= 4) {
       element.classList.remove("bg-[#F7F8F8]");
       element.classList.add("bg-[#1DD100]");
       seats.push(element);
       addSeat(element, seats);
+    } else {
+      maxSeatModal.showModal();
     }
   }
-  else{
-    errorModal.showModal();
-  }
+
   seatLeft.innerText = 40 - seats.length;
   total.innerText = seats.length * 500;
   grandTotal.innerText = seats.length * 500;
@@ -47,12 +47,11 @@ function ticketDone() {
   const phone = document.getElementById("customerPhone").value;
   const successModal = document.getElementById("successModal");
 
-  if (name.length > 0 && phone.length > 0 && seats.length > 0) {
+  if (name.length >= 2 && phone.length == 11 && seats.length > 0) {
     successModal.showModal();
   } else {
     errorModal.showModal();
   }
 }
-
 
 // bg-[url('/assets/images/banner.png')] bg-no-repeat bg-cover
