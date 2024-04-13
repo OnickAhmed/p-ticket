@@ -95,7 +95,8 @@
             </ul>
           </div>
           <div class="navbar-end">
-            <a class="btn bg-[#1DD1001A] hover:bg-[#1DD1001A] hover:border-[#1DD100] text-[#1DD100] border-[#1DD10066] px-8"
+            <a
+              class="btn bg-[#1DD1001A] hover:bg-[#1DD1001A] hover:border-[#1DD100] text-[#1DD100] border-[#1DD10066] px-8"
               >Bus
               <img src="assets/images/bus-icon.png" alt="" />
             </a>
@@ -136,7 +137,7 @@
         >
           <!-- 500+ -->
           <div
-            class="card card-side bg-base-100 shadow-xl w-[300px] h-[140px] p-8 items-center"
+            class="border-b-4 border-[#1DD100] card card-side bg-base-100 shadow-xl w-[300px] h-[140px] p-8 items-center"
           >
             <figure>
               <img src="assets/images/people.png" alt="Movie" />
@@ -148,7 +149,7 @@
           </div>
           <!-- 1.7 Lacks -->
           <div
-            class="card card-side bg-base-100 shadow-xl w-[300px] h-[140px] p-8 my-5 md:my-0 md:mx-6 items-center"
+            class="border-b-4 border-[#1DD100] card card-side bg-base-100 shadow-xl w-[300px] h-[140px] p-8 my-5 md:my-0 md:mx-6 items-center"
           >
             <figure>
               <img src="assets/images/ticket-cupon.png" alt="Movie" />
@@ -160,7 +161,7 @@
           </div>
           <!-- 80K+ -->
           <div
-            class="card card-side bg-base-100 shadow-xl w-[300px] h-[140px] p-8 items-center"
+            class="border-b-4 border-[#1DD100] card card-side bg-base-100 shadow-xl w-[300px] h-[140px] p-8 items-center"
           >
             <figure>
               <img src="assets/images/stoppage.png" alt="Movie" />
@@ -250,8 +251,12 @@
             <div class="bg-white flex flex-col lg:flex-row rounded-3xl my-6">
               <div class="w-3/4 p-5 lg:p-12 self-center lg:self-start">
                 <div class="flex flex-col lg:flex-row">
-                  <img src="assets/images/bus-logo.png" alt="" />
-                  <div class="ml-4 text-start">
+                  <img
+                    class="w-1/5 lg:w-1/12 mx-auto lg:mx-0"
+                    src="assets/images/bus-logo.png"
+                    alt=""
+                  />
+                  <div class="ml-0 lg:ml-4 text-center lg:text-start">
                     <h1
                       class="font-['Raleway'] font-bold text-3xl text-[#030712]"
                     >
@@ -286,10 +291,10 @@
                     class="flex flex-col lg:flex-row justify-between py-6 border-b-2 border-dashed border-[#03071233]"
                   >
                     <p class="font-['Raleway'] font-semibold text-[#03071299]">
-                      Route
+                      Departure Time
                     </p>
                     <p class="font-['Raleway'] font-semibold text-[#030712]">
-                      Dhaka-Sylhet
+                      9:00 PM
                     </p>
                   </div>
                   <div class="mt-6 flex flex-col lg:flex-row justify-between">
@@ -299,7 +304,7 @@
                         role="button"
                         class="btn m-1 bg-[#0307120D]"
                       >
-                        Boarding Point: Laxmipur
+                        Boarding Point: Dhaka
                       </div>
                       <ul
                         tabindex="0"
@@ -322,9 +327,9 @@
                         tabindex="0"
                         class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
                       >
+                        <li><a>Sylhet-Bishwaroad</a></li>
                         <li><a>Sylhet-Habiganj</a></li>
                         <li><a>Sylhet-Kadamtali</a></li>
-                        <li><a>Sylhet-Bishwaroad</a></li>
                       </ul>
                     </div>
                     <div class="dropdown dropdown-hover">
@@ -333,16 +338,8 @@
                         role="button"
                         class="btn m-1 bg-[#0307120D]"
                       >
-                        Est. Time - 11 Hour
+                        Est. Time - 07 Hour
                       </div>
-                      <ul
-                        tabindex="0"
-                        class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-                      >
-                        <li><a>15 Hour</a></li>
-                        <li><a>19 Hour</a></li>
-                        <li><a>23 Hour</a></li>
-                      </ul>
                     </div>
                   </div>
                 </div>
@@ -399,6 +396,13 @@
                   </div>
                 </div>
                 <div>
+                  <div class="flex justify-end gap-5 lg:gap-10 my-5 w-full">
+                    <kbd
+                      class="kbd w-[130px] lg:w-[150px] bg-[#0307121A] text-[#03071280] border-none p-4"
+                      title="Driver"
+                      ><img src="assets/images/wheel.png" alt=""
+                    /></kbd>
+                  </div>
                   <div class="flex gap-5 lg:gap-10 my-5 w-full">
                     <p class="w-[20px] p-4">A</p>
                     <kbd
@@ -713,7 +717,14 @@
                       <h1>Total Price</h1>
                       <h1>BDT <span id="totalPrice">00</span></h1>
                     </div>
-                    <div>
+                    <div
+                      id="discountArea"
+                      class="hidden justify-between my-4 border-t-2 border-dashed border-[#03071233]"
+                    >
+                      <h1>Total Discount</h1>
+                      <h1>BDT <span id="discountPrice">00</span></h1>
+                    </div>
+                    <div id="couponSection">
                       <label
                         class="input input-bordered flex items-center lg:gap-2 pr-0 border-none"
                       >
@@ -724,8 +735,10 @@
                           placeholder="Have any coupon?"
                         />
                         <button
+                          id="couponButton"
                           onclick="applyCoupon()"
                           class="btn bg-[#1DD100] hover:bg-[#1DD100] text-white hover:text-black border-none"
+                          disabled
                         >
                           Apply
                         </button>
@@ -747,6 +760,7 @@
                       type="text"
                       placeholder="Enter your name"
                       class="input input-bordered w-full mt-2 mb-6"
+                      oninput="ticketReady()"
                     />
                   </label>
                   <label class="form-control w-full">
@@ -755,9 +769,10 @@
                     </div>
                     <input
                       id="customerPhone"
-                      type="text"
+                      type="number"
                       placeholder="Enter your phone number"
                       class="input input-bordered w-full mt-2 mb-6"
+                      oninput="ticketReady()"
                     />
                   </label>
                   <label class="form-control w-full">
@@ -771,8 +786,10 @@
                     />
                   </label>
                   <button
+                    id="confirmTicket"
                     onclick="ticketDone()"
                     class="btn w-full bg-[#1DD100] text-white hover:bg-[#1DD100] hover:text-black my-6"
+                    disabled
                   >
                     Next
                   </button>
@@ -830,6 +847,7 @@
         </div>
       </div>
     </footer>
+    <!-- Success Modal -->
     <dialog
       id="successModal"
       class="modal modal-bottom sm:modal-middle font-['Roboto']"
@@ -853,6 +871,7 @@
         </div>
       </div>
     </dialog>
+    <!-- Error on Booking -->
     <dialog
       id="errorModal"
       class="modal modal-bottom sm:modal-middle font-['Roboto']"
@@ -873,6 +892,7 @@
         </div>
       </div>
     </dialog>
+    <!-- Ticket Maxed out -->
     <dialog
       id="maxSeatModal"
       class="modal modal-bottom sm:modal-middle font-['Roboto']"
@@ -883,6 +903,25 @@
         <p class="pt-4 text-xl text-[#4A4A4A]">
           You have exceeded the maximum amount you can book.
         </p>
+        <p class="pb-4 text-[#4A4A4A] font-light">Please Try Again</p>
+        <div class="modal-action flex justify-center">
+          <form method="dialog">
+            <button class="btn bg-[#27AE60] text-white rounded-3xl px-8 py-2">
+              Continue
+            </button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+    <!-- Wrong Coupon Modal -->
+    <dialog
+      id="wrongCouponModal"
+      class="modal modal-bottom sm:modal-middle font-['Roboto']"
+    >
+      <div class="modal-box text-center">
+        <img class="mx-auto my-5" src="assets/images/error-10376.png" alt="" />
+        <h3 class="font-bold text-lg text-[#27AE60]">Error!</h3>
+        <p class="pt-4 text-xl text-[#4A4A4A]">Wrong Coupon</p>
         <p class="pb-4 text-[#4A4A4A] font-light">Please Try Again</p>
         <div class="modal-action flex justify-center">
           <form method="dialog">
